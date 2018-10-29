@@ -3,7 +3,7 @@
 import tempfile
 import os
 from executor import execute
-from flask import Flask, request, make_response
+from flask import Flask, request, make_response, abort
 
 app = Flask(__name__)
 
@@ -37,6 +37,9 @@ def htmltopdf():
         source_file.write(request.files['file'].read())
         source_file.flush()
         args += [source_file.name, source_file.name + ".pdf"]
+    else:
+        app.logger.warning('no file in request.files: %s', request.files)
+        abort(400)
 
     # Execute the command using executor
     execute(' '.join(args))
