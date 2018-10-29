@@ -50,3 +50,6 @@ def htmltopdf():
     
     return resp
 
+@app.route('/liveness')
+def liveness():
+    return "OK"

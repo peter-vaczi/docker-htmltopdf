@@ -41,5 +41,5 @@ RUN pip install flask executor
 COPY app.py /app.py
 
 ENV FLASK_APP app.py
-
+USER nobody
 ENTRYPOINT ["flask", "run", "--host=0.0.0.0"]
