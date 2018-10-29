@@ -39,7 +39,6 @@ RUN apt-get install -y python-pip
 RUN pip install flask executor
 
 COPY app.py /app.py
-EXPOSE 80
 
 ENV FLASK_APP app.py
 
